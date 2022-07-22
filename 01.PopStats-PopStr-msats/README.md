@@ -2,9 +2,48 @@
 *Your genotypes should be in structure format. See [discreteRFgenotypes.stru](https://github.com/squisquater/Tutorials/blob/main/01.PopStats-PopStr-msats/discreteRFgenotypes.stru) for an example. This tutorial will use this inupt file and associated parameters. You will therefore need to modify all the scripts to suite your study system/needs.*
 
 ## Population Structure
-**STEP 0:** \
-**STEP 1:** \
-**STEP 2:**
+**STEP 0:** Open the Structure program \
+\
+**STEP 1:** Set up your Structure project
+Select **'New Project'** from the **File** dropdown menu which will open the **Project Wizard** 
+* Step 1 of 4: Project Information
+  *  Name your project (i.e. "WestRF")
+  *  Select Directory where your output files will go **'discreteRFgenotypes.stru'** file is located
+  *  Choose data file (i.e. **'discreteRFgenotypes.stru'**)
+* Step 2 of 4: Information of Input Dataset
+  *  Number of individuals: **301**
+  *  Ploidy of data (This should be 2 for diploids)
+  *  Number of loci: **31**
+  *  Missing data value: **-9**
+* Step 3 of 4: Format of Input Dataset
+  *  Select **'Row of marker names'**
+  *  Select **'Data file stores data for individuals in a single line'**
+* Step 4 of 4: Format of Input Dataset (continued)
+  *  Select **'Individual ID for each individual'**
+  *  Select **'Putative population origin for each individual'** ONLY IF YOU HAVE THIS INFORMATION AS A COLUMN
+* Click **'Finish'**
+* Click **'Proceed'**
+
+This should load your input file and all associated project information
+
+**STEP 2:** Create a new paramter set
+* Select **'New...'** from the **'Parameter Set'** dropdown menu
+* Under the **'Run Length'** tab choose the:
+  * Length of your Burnin Period: 10000 (suggested)
+  * Number of MCMC Reps after Burnin: 50000 (suggested)
+* Under the **'Ancestry Model'** tab select:
+  * **Use Admixture Model** (default)
+* Under the **'Allele Frequency Model'** tab select:
+  * **Allele Frequencies Correlated** (default)
+* Under the **'Advanced'** tab select:
+  * **Compute probability of the data (for estimating k)** (default)
+  * **Print Q-hat** (this generates a nice tab-delimited text file with ancestry proportions)
+* Click **'OK'**
+* Name the Parameter Set (i.e. 'WestRF_10k50k')
+
+**STEP 3:** Run Structure
+* Select **'Run'** from the **'Parameter Set'** dropdown menu
+* Set the number of population assumed
 
 ## Population Summary Statistics and Ne
 These statistics will be calculated for discrete groups. It is therefore suggested that you use the results from the population structure analyses to determine how to discretize your data (e.g., geographic clusters, genetic clusters, etc.)

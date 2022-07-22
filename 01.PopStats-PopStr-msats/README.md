@@ -28,7 +28,7 @@ data <- read.structure("discreteRFgenotypes.stru", n.ind = 301, n.loc = 31, oner
 ```
 *You can type 'read.structure' into the 'R' help menu to find out more about each of these options/parameters.* 
 
-**STEP 2:** Calculate basic summmary statistics (i.e., Heterozygosity, Allelic Richness, Inbreeding, Pairwise Fst, etc.) \
+**STEP 2:** Calculate basic summmary statistics (i.e., Heterozygosity, Allelic Richness, Pairwise Fst, etc.) \
 \
 2a: Write a function to calculate the standard error
 ```

@@ -52,7 +52,7 @@ This should load your input file and all associated project information
 ## Population Summary Statistics and Ne
 These statistics will be calculated for discrete groups. It is therefore suggested that you use the results from the population structure analyses to determine how to discretize your data (e.g., geographic clusters, genetic clusters, etc.)
 
-You will also need to output file from structure (i.e. 'project_data.stru') as an input for these analyses. This should be located in the project directory you specified above. This file is included [here]() for reference.
+You will also need to output file from structure (i.e. 'project_data.stru') as an input for these analyses. This should be located in the project directory you specified above. This file is also included [here](https://github.com/squisquater/Tutorials/blob/main/01.PopStats-PopStr-msats/project_data.stru) for reference.
 
 **STEP 0:** Install/load the required packages in R and set your working directory
 
@@ -69,7 +69,7 @@ setwd("~/path/to/working/directory)")
 **STEP 1:** Read in your structure file using the 'read.structure' command {adegenet} to convert it to a GENIND object. \
 
 ```
-data <- read.structure("discreteRFgenotypes.stru", n.ind = 301, n.loc = 31, onerowperind = T, col.lab = 1, col.pop = 2, col.others = 0, row.marknames = 1, NA.char = "-9", ask = TRUE, quiet = T)
+data <- read.structure("project_data.stru", n.ind = 301, n.loc = 31, onerowperind = T, col.lab = 1, col.pop = 2, col.others = 0, row.marknames = 1, NA.char = "-9", ask = TRUE, quiet = T)
 ```
 *You can type 'read.structure' into the 'R' help menu to find out more about each of these options/parameters.* 
 

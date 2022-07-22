@@ -1,5 +1,9 @@
 # Basic population structure and population genetic statistics for microsatellite data
-*Your genotypes should be in structure format. See [discreteRFgenotypes.stru](https://github.com/squisquater/Tutorials/blob/main/01.PopStats-PopStr-msats/discreteRFgenotypes.stru) for an example. This tutorial will use this inupt file and associated parameters. You will therefore need to modify all the scripts to suite your study system/needs.*
+*Your genotypes should be in the proper format to run a structure analyis. See 
+
+
+
+[discreteRFgenotypes.stru](https://github.com/squisquater/Tutorials/blob/main/01.PopStats-PopStr-msats/discreteRFgenotypes.stru) for an example. This tutorial will use this inupt file and associated parameters. You will therefore need to modify all the scripts to suite your study system/needs.*
 
 ## Population Structure
 **STEP 0:** Open the Structure program \
@@ -27,7 +31,7 @@ Select **'New Project'** from the **File** dropdown menu which will open the **P
 This should load your input file and all associated project information
 
 **STEP 2:** Create a new paramter set
-* Select **'New...'** from the **'Parameter Set'** dropdown menu
+* Select **'Run'** from the **'Parameter Set'** dropdown menu
 * Under the **'Run Length'** tab choose the:
   * Length of your Burnin Period: 10000 (suggested)
   * Number of MCMC Reps after Burnin: 50000 (suggested)

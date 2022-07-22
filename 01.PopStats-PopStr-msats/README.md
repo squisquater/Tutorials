@@ -49,6 +49,8 @@ This should load your input file and all associated project information
  * You should test out multiple iterations of K.
  * You can also run multiple replicates of the same K-value in order to use structure harvester and determine the K-value with the highest likelihood.
 
+**STEP 4:** Structure Harvester
+
 ## Population Summary Statistics and Ne
 These statistics will be calculated for discrete groups. It is therefore suggested that you use the results from the population structure analyses to determine how to discretize your data (e.g., geographic clusters, genetic clusters, etc.)
 

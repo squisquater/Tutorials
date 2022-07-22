@@ -154,7 +154,7 @@ Estimated Ne^ =                    6.2         8.1
 \
 Refer to Table S7 from [Quinn et al. (2022)](https://www.nature.com/articles/s41437-022-00522-4#Sec21) as a reference for reporting results from these analyses.
 
-| Population                                                                                       | n  | HE (SE)       | HO (SE)       | AR (SE)     | Ne (95% CI) |
+| Population                                                                                       | n  | H<sub>E</sub> (SE)       | H<sub>O</sub> (SE)       | AR (SE)     | N<sub>e</sub> (95% CI) |
 | ------------------------------------------------------------------------------------------------------------ | -- | ------------- | ------------- | ----------- | ----------------------- |
 | Washington Cascade                                                                                           | 28 | 0.584 (0.034) | 0.584 (0.037) | 4.13 (0.26) | 6.2 (2.9-10.8)          |
 | Oregon Cascade                                                                                               | 35 | 0.547 (0.026) | 0.532 (0.025) | 4.38 (0.29) | 9.3 (3.9-17.3)          |

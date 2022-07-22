@@ -1,11 +1,9 @@
 # Basic population structure and population genetic statistics for microsatellite data
-*Your genotypes should be in the proper format to run a structure analyis. See 
-
-
-
-[discreteRFgenotypes.stru](https://github.com/squisquater/Tutorials/blob/main/01.PopStats-PopStr-msats/discreteRFgenotypes.stru) for an example. This tutorial will use this inupt file and associated parameters. You will therefore need to modify all the scripts to suite your study system/needs.*
+Your genotypes should be in the proper format to run a structure analyis. See [discreteRFgenotypes_popmod.txt](https://github.com/squisquater/Tutorials/blob/main/01.PopStats-PopStr-msats/discreteRFgenotypes_popmod.txt) for an example. This tutorial will use this inupt file and associated parameters. You will therefore need to modify all the scripts to align with the files associated with your project and mofisy parameters accordingly.*
 
 ## Population Structure
+Note that structure will accomodate population data but expects a number as opposed to text. For reference, WAC = 1, ORC = 2, LAS = 3, SN = 4, SV = 5, CANN = 6. \
+\
 **STEP 0:** Open the Structure program \
 \
 **STEP 1:** Set up your Structure project
@@ -30,7 +28,7 @@ Select **'New Project'** from the **File** dropdown menu which will open the **P
 
 This should load your input file and all associated project information
 
-**STEP 2:** Create a new paramter set
+**STEP 2:** Create a new parameter set
 * Select **'Run'** from the **'Parameter Set'** dropdown menu
 * Under the **'Run Length'** tab choose the:
   * Length of your Burnin Period: 10000 (suggested)
@@ -47,10 +45,14 @@ This should load your input file and all associated project information
 
 **STEP 3:** Run Structure
 * Select **'Run'** from the **'Parameter Set'** dropdown menu
-* Set the number of population assumed
+* Set the number of populations assumed. 
+ * You should test out multiple iterations of K.
+ * You can also run multiple replicates of the same K-value in order to use structure harvester and determine the K-value with the highest likelihood.
 
 ## Population Summary Statistics and Ne
 These statistics will be calculated for discrete groups. It is therefore suggested that you use the results from the population structure analyses to determine how to discretize your data (e.g., geographic clusters, genetic clusters, etc.)
+
+You will also need to output file from structure (i.e. 'project_data.stru') as an input for these analyses. This should be located in the project directory you specified above. This file is included [here]() for reference.
 
 **STEP 0:** Install/load the required packages in R and set your working directory
 

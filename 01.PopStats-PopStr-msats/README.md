@@ -1,5 +1,5 @@
 # Basic population structure and population genetic statistics for microsatellite data
-Your genotypes should be in the proper format to run a structure analyis. See [discreteRFgenotypes_popmod.txt](https://github.com/squisquater/Tutorials/blob/main/01.PopStats-PopStr-msats/discreteRFgenotypes_popmod.txt) for an example. This tutorial will use this inupt file and associated parameters. You will therefore need to modify all the scripts to align with the files associated with your project and mofisy parameters accordingly.*
+Your genotypes should be in the proper format to run a structure analyis. See [discreteRFgenotypes_popmod.txt](https://github.com/squisquater/Tutorials/blob/main/01.PopStats-PopStr-msats/discreteRFgenotypes_popmod.txt) for an example. This tutorial will use this input file and associated parameters. To run these analyses on your own data, you will therefore need to modify all the scripts to align with the files associated with your project and modify parameters accordingly.*
 
 ## Population Structure
 Note that structure will accomodate population data but expects a number as opposed to text. For reference, WAC = 1, ORC = 2, LAS = 3, SN = 4, SV = 5, CANN = 6. \

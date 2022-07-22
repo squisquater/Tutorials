@@ -103,4 +103,63 @@ convert your GENIND object to a GENEPOP file for use in the NeEstimator GUI.
 ```
 write.genepop(d_discrete, "discretepops", "populations with discrete population structure in the western US")
 ```
-3b: Run NeEstimator2 through GUI, using LD method with random mating and 0.05 pcrit. You can install the program [here](http://www.molecularfisherieslaboratory.com.au/neestimator-software/) (you will need to fill out a brief form with your info to download). Youmay also need to download [java](https://www.java.com/en/) if it is not already installed on your computer.
+3b: Run NeEstimator2 through GUI, using LD method with random mating and 0.05 pcrit. You can download the program [here](http://www.molecularfisherieslaboratory.com.au/neestimator-software/) (you will need to fill out a brief form with your info to download). You may also need to download [java](https://www.java.com/en/) if it is not already installed on your computer. Unzip the directory. \
+\
+Make sure the 'discretepops_genepop.gen' file is located within the directory where your executable is found (NeEstimator2x1.jar). \
+\
+Click on the NeEstimator2x1.jar to open NeEstimator. \
+\
+Select the 'discretepops_genepop.gen' file from the **Choose File:** dropdown menu \
+\
+Select the **Linkage Disequilibrium** Model \
+\
+Select the **Random Mating** Model
+\
+De-select the **Heterozygote Excess**, **Molecular Coancestry**, and **Temporal, Plan II** Models \
+\
+Select a Critical Value of **0.05** - Remove/Delete any other critical values \
+\
+**>>> Run Ne >>>**
+
+3a: You should end up with an output file that has the Ne and associated 95% confidence intervals for each of your input populations. 
+```
+...
+...
+Population     1 [S13-0964]  (Number of Individuals = 28)
+****************
+--------------------------------------------------
+Lowest Allele Frequency Used     0.050         0+
+--------------------------------------------------
+
+
+LINKAGE DISEQUILIBRIUM METHOD
+
+Harmonic Mean Sample Size =       27.3        27.2
+Independent Comparisons =       3968        4614
+OverAll r^2 =                 0.077276    0.071208
+Expected r^2 Sample =         0.040965    0.041128
+Estimated Ne^ =                    6.2         8.1
+
+95% CIs for Ne^
+* Parametric                       5.2         7.1
+                                   7.1         9.2
+
+* JackKnife on Samples             2.9         4.2
+                                  10.8        14.0
+                                  
+...
+...
+```
+*Use the Ne estimate that is associated with the 0.05 critical value (i.e. 6.2 in the above example) and the 95% confidence intervals associated with the jacknifing approach (i.e., 2.9 & 10.8)* \
+\
+Refer to Table S7 from [Quinn et al. (2022)](https://www.nature.com/articles/s41437-022-00522-4#Sec21) as a reference for reporting results from these analyses.
+
+| Population                                                                                       | n  | HE (SE)       | HO (SE)       | AR (SE)     | Ne (95% CI) |
+| ------------------------------------------------------------------------------------------------------------ | -- | ------------- | ------------- | ----------- | ----------------------- |
+| Washington Cascade                                                                                           | 28 | 0.584 (0.034) | 0.584 (0.037) | 4.13 (0.26) | 6.2 (2.9-10.8)          |
+| Oregon Cascade                                                                                               | 35 | 0.547 (0.026) | 0.532 (0.025) | 4.38 (0.29) | 9.3 (3.9-17.3)          |
+| Lassen Cascade                                                                                               | 27 | 0.506 (0.026) | 0.483 (0.029) | 3.48 (0.20) | 2.6 (1.7-5.4)           |
+| Sierra Nevada                                                                                                | 44 | 0.662 (0.022) | 0.67 (0.026)  | 4.81 (0.30) | 3.5 (2.9-5.4)           |
+
+
+

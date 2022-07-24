@@ -160,7 +160,7 @@ ggplot(data = melted, aes(Var2, Var1, fill = value))+
                        theme(axis.text.x = element_text(angle = 45, vjust = 1, size = 11, hjust = 1), axis.text.y = element_text(size = 12)) + 
             coord_fixed()
 ```
-
+<img align="left" src="/MECU_Logo_NEWFONT_1000.png" width="300"> 
 
 **STEP 3:** Calculate effective population size \
 \

@@ -125,15 +125,34 @@ Hsse <- apply(basicstats$Hs, 2, se) #Std.error of expected heterozygosity per gr
 ```
 2d: Calculate the Weir and Cockerham pairwise-Fst between populations
 ```
-pairwise.WCfst(d_discrete, diploid = TRUE)
+Fst <- pairwise.WCfst(d_discrete, diploid = TRUE)
+Fst
 
-#           WAC       ORC       LAS        SN         SV       CANN
-# WAC         NA 0.2140956 0.2369856 0.1856994 0.15380814 0.13856409
-# ORC  0.2140956        NA 0.2860115 0.1739258 0.19034948 0.13596701
-# LAS  0.2369856 0.2860115        NA 0.2071802 0.20901366 0.16926347
-# SN   0.1856994 0.1739258 0.2071802        NA 0.13027340 0.10470462
-# SV   0.1538081 0.1903495 0.2090137 0.1302734         NA 0.08195674
-# CANN 0.1385641 0.1359670 0.1692635 0.1047046 0.08195674         NA
+#         1         2         3         4          5          6
+# 1        NA 0.2140956 0.2369856 0.1856994 0.15380814 0.13856409
+# 2 0.2140956        NA 0.2860115 0.1739258 0.19034948 0.13596701
+# 3 0.2369856 0.2860115        NA 0.2071802 0.20901366 0.16926347
+# 4 0.1856994 0.1739258 0.2071802        NA 0.13027340 0.10470462
+# 5 0.1538081 0.1903495 0.2090137 0.1302734         NA 0.08195674
+# 6 0.1385641 0.1359670 0.1692635 0.1047046 0.08195674         NA
+
+Fst.mat <- as.matrix(Fst)
+```
+Rename populations so they have the correct pop names
+
+```
+colnames(Fst.mat) <- c("WAC", "ORC", "LAS", "SN","SV", "CANN")
+rownames(Fst.mat) <- colnames(Fst.mat)
+
+#Set up the matrix to be plotted by ggplot
+Fst.mat.tri <- Fst.mat
+Fst.mat.tri[lower.tri(Fst.mat, diag=TRUE)] <- NA
+#fst.mat = data.matrix(fst.df.tri)
+melted <- melt(Fst.mat.tri, na.rm =TRUE)
+```
+Plot it!
+```
+ggplot(data = melted, aes(Var2, Var1, fill = value))+ geom_tile(color = "white")+ scale_fill_gradient(low = "white", high = "red", name="FST")  + ggtitle(expression(atop("Pairwise FST, WC (1984)", atop(italic("N = 143, L = 3,759"), ""))))+labs( x = "Sampling Site", y = "Sampling Site") + theme(axis.text.x = element_text(angle = 45, vjust = 1, size = 11, hjust = 1),axis.text.y = element_text(size = 12)) + coord_fixed()
 ```
 
 **STEP 3:** Calculate effective population size \

@@ -160,7 +160,12 @@ ggplot(data = melted, aes(Var2, Var1, fill = value))+
                        theme(axis.text.x = element_text(angle = 45, vjust = 1, size = 11, hjust = 1), axis.text.y = element_text(size = 12)) + 
             coord_fixed()
 ```
-<img align="center" src="/Pairwise.Fst.png" width="300">  \
+<img align="center" src="/01.PopStats-PopStr-msats/Pairwise.Fst.png" width="500">  \
+
+Save the plot to your working directory
+```
+ggsave(plot = Fst.plot, width = 5, height = 4, dpi = 300, filename = "Pairwise.Fst.png")
+```
 
 **STEP 3:** Calculate effective population size \
 \

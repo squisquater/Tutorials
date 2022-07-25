@@ -72,9 +72,13 @@ You will also need to output file from structure (i.e. 'project_data.stru') as a
 ```
 install.packages("adegenet")
 install.packages("hierfstat")
+install.packages("reshape2")
+install.packages("ggplot2")
 
 library(adegenet)
 library(hierfstat)
+library(reshape2)
+library(ggplot2
 
 setwd("~/path/to/working/directory)")
 ```

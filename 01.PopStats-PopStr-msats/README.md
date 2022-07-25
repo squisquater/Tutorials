@@ -29,7 +29,7 @@ Select **'New Project'** from the **File** dropdown menu which will open the **P
 This should load your input file and all associated project information
 
 **STEP 2:** Create a new parameter set
-* Select **'Run'** from the **'Parameter Set'** dropdown menu
+* Select **'New...'** from the **'Parameter Set'** dropdown menu
 * Under the **'Run Length'** tab choose the:
   * Length of your Burnin Period: 10000 (suggested)
   * Number of MCMC Reps after Burnin: 50000 (suggested)
@@ -49,7 +49,18 @@ This should load your input file and all associated project information
  * You should test out multiple iterations of K.
  * You can also run multiple replicates of the same K-value in order to use structure harvester and determine the K-value with the highest likelihood.
 
+**STEP 4:** View Results
+* Select the value of K you want to view from the Results folder.
+* Select **Bar Plot** from the Results menu to view the admixture proportions. You can sort by POP if they are not already in order.
+* These results are also available in the Results folder and can be plotted in R or excel to customize the figure (i.e. colors, labels, etc)
+
 **STEP 4:** Structure Harvester
+* Zip your Results folder
+* Navigate the the [Structure Harvester](https://taylor0.biology.ucla.edu/structureHarvester/) website
+* Load the .zip file
+* Click the **Harvest!** button
+* This will give you the likelihood scores associated with each K value.
+* This will also show the delta-K values (Evanno method), assuming you ran >1 iteration of each K value. 
 
 ## Population Summary Statistics and Ne
 These statistics will be calculated for discrete groups. It is therefore suggested that you use the results from the population structure analyses to determine how to discretize your data (e.g., geographic clusters, genetic clusters, etc.)

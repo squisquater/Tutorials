@@ -91,11 +91,11 @@ ar <- allelic.richness(d_discrete) # per locus
 ar$min.all # the number of alleles used for rarefaction (default is min number of individuals in a group * 2)
 
 ARmean <- apply(ar$Ar, 2, mean) # mean per population
-#    WAC      ORC      LAS       SN       SV     CANN 
+#     1        2        3        4        5        6 
 # 4.126517 4.382390 3.483252 4.814377 5.077759 5.990235 
 
 ARse <- apply(ar$Ar, 2, se) #standard error of the mean AR per population
-#    WAC       ORC       LAS        SN        SV      CANN 
+#      1         2         3         4         5         6 
 # 0.2633509 0.2881938 0.2016592 0.3015382 0.2971134 0.4114317 
 ```
 
@@ -104,23 +104,23 @@ ARse <- apply(ar$Ar, 2, se) #standard error of the mean AR per population
 basicstats <- basic.stats(d_discrete)
 
 Nind <- apply(basicstats$n.ind.samp, 2, max, na.rm=TRUE) # Number of individuals per group
-# WAC  ORC  LAS   SN   SV CANN 
-#  28   35   27   44   58  109 
+#  1   2   3   4   5   6 
+# 28  35  27  44  58 109 
 
 Homean <- apply(basicstats$Ho,2, mean) #mean observed heterozygosity per group
-#     WAC       ORC       LAS        SN        SV      CANN 
+#      1         2         3         4         5         6 
 # 0.5838710 0.5315194 0.4832387 0.6701258 0.5942613 0.6302258 
 
 Hose <- apply(basicstats$Ho,2, se) #Std.error of observed heterozygosity per group
-#     WAC        ORC        LAS         SN         SV       CANN 
+#      1          2          3          4          5          6 
 # 0.03725410 0.02489624 0.02897126 0.02607292 0.03542426 0.02609991 
 
 Hsmean <- apply(basicstats$Hs, 2, mean) #mean expected heterozygosity per group
-#     WAC       ORC       LAS        SN        SV      CANN 
+#     1         2         3         4         5         6 
 # 0.5840710 0.5473484 0.5063484 0.6615613 0.6344742 0.6952161 
 
 Hsse <- apply(basicstats$Hs, 2, se) #Std.error of expected heterozygosity per group
-#     WAC        ORC        LAS         SN         SV       CANN 
+#      1          2          3          4          5          6 
 # 0.03379070 0.02555326 0.02582648 0.02238832 0.03355569 0.02709591 
 ```
 2d: Calculate the Weir and Cockerham pairwise-Fst between populations

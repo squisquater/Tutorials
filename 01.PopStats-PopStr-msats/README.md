@@ -56,7 +56,7 @@ This should load your input file and all associated project information
 
 **STEP 4:** Structure Harvester
 * Zip your Results folder
-* Navigate the the [Structure Harvester](https://taylor0.biology.ucla.edu/structureHarvester/) website
+* Navigate to the [Structure Harvester](https://taylor0.biology.ucla.edu/structureHarvester/) website
 * Load the .zip file
 * Click the **Harvest!** button
 * This will give you the likelihood scores associated with each K value.

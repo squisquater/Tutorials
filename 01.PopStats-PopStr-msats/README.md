@@ -80,7 +80,7 @@ library(hierfstat)
 library(reshape2)
 library(ggplot2
 
-setwd("~/path/to/working/directory)")
+setwd("~/path/to/working/directory")
 ```
 
 **STEP 1:** Read in your structure file using the 'read.structure' command {adegenet} to convert it to a GENIND object.

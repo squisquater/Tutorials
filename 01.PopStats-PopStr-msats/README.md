@@ -86,7 +86,7 @@ setwd("~/path/to/working/directory")
 **STEP 1:** Read in your structure file using the 'read.structure' command {adegenet} to convert it to a GENIND object.
 
 ```
-data <- read.structure("project_data.stru", n.ind = 301, n.loc = 31, onerowperind = T, col.lab = 1, col.pop = 2, col.others = 0, row.marknames = 1, NA.char = "-9", ask = TRUE, quiet = T)
+d_discrete <- read.structure("project_data.stru", n.ind = 301, n.loc = 31, onerowperind = T, col.lab = 1, col.pop = 2, col.others = 0, row.marknames = 1, NA.char = "-9", ask = TRUE, quiet = T)
 ```
 *You can type 'read.structure' into the 'R' help menu to find out more about each of these options/parameters.* 
 

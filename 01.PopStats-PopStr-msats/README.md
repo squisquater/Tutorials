@@ -60,7 +60,7 @@ This should load your input file and all associated project information
 * Select **Bar Plot** from the Results menu to view the admixture proportions. You can sort by POP if they are not already in order.
 * These results are also available in the Results folder and can be plotted in R or excel to customize the figure (i.e. colors, labels, etc)
 
-**STEP 4:** Structure Harvester
+**STEP 5:** Structure Harvester
 * Zip your Results folder
 * Navigate to the [Structure Harvester](https://taylor0.biology.ucla.edu/structureHarvester/) website
 * Load the .zip file

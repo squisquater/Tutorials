@@ -1,4 +1,9 @@
 # Basic population structure and population genetic statistics for microsatellite data
+
+This tutorial uses data from:
+
+Quinn, C.B., Preckler-Quisquater, S., Akins, J.R. et al. Contrasting genetic trajectories of endangered and expanding red fox populations in the western U.S. Heredity (2022). https://doi.org/10.1038/s41437-022-00522-4
+
 Your genotypes should be in the proper format to run a structure analyis. See [discreteRFgenotypes_popmod.txt](https://github.com/squisquater/Tutorials/blob/main/01.PopStats-PopStr-msats/discreteRFgenotypes_popmod.txt) for an example. This tutorial will use this input file and associated parameters. To run these analyses on your own data, you will therefore need to modify all the scripts to align with the files associated with your project and modify parameters accordingly.*
 
 You can clone this repository to your own computer by entering the following line of code in your terminal.
@@ -199,7 +204,6 @@ ggsave(plot = Fst.plot, width = 5, height = 4, dpi = 300, filename = "Pairwise.F
 **STEP 3:** Calculate effective population size \
 \
 3a: Load the [helper script](https://github.com/squisquater/Tutorials/blob/main/01.PopStats-PopStr-msats/write_genepop_function.R) that writes genepop file from adegenet object. This is used to create input for NeEstimator2. \
-*You will need to download this file to create a copy of it in your working directory.* 
 
 ```
 source("write_genepop_function.R")

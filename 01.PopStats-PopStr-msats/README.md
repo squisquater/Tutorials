@@ -2,7 +2,7 @@
 
 This tutorial uses data from:
 
-Quinn, C.B., Preckler-Quisquater, S., Akins, J.R. et al. Contrasting genetic trajectories of endangered and expanding red fox populations in the western U.S. Heredity (2022). https://doi.org/10.1038/s41437-022-00522-4
+Quinn, C.B., Preckler-Quisquater, S., Akins, J.R. et al. **Contrasting genetic trajectories of endangered and expanding red fox populations in the western U.S.** Heredity (2022). https://doi.org/10.1038/s41437-022-00522-4
 
 Your genotypes should be in the proper format to run a structure analyis. See [discreteRFgenotypes_popmod.txt](https://github.com/squisquater/Tutorials/blob/main/01.PopStats-PopStr-msats/discreteRFgenotypes_popmod.txt) for an example. This tutorial will use this input file and associated parameters. To run these analyses on your own data, you will therefore need to modify all the scripts to align with the files associated with your project and modify parameters accordingly.*
 

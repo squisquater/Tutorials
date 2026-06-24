@@ -152,7 +152,7 @@ The raw output files can also be exported and visualized using R, ArcGIS, or Exc
 
 **STEP 5:** Structure Harvester
 * Zip your Results folder
-* Navigate to the [Structure Harvester](https://taylor0.biology.ucla.edu/structureHarvester/) website
+* Navigate to the [Structure Harvester](https://www.researchgate.net/deref/https%3A%2F%2Flmme.ac.cn%2FStructureSelector%2F?_tp=eyJjb250ZXh0Ijp7ImZpcnN0UGFnZSI6InF1ZXN0aW9uIiwicGFnZSI6InF1ZXN0aW9uIn19) website
 * Load the .zip file
 * Click the **Harvest!** button
 * Structure Harvester provides:

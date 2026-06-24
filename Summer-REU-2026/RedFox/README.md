@@ -254,7 +254,7 @@ s.class(
 
 This will generate a PCA plot showing the genetic relationships among individuals.
 
-### Interpreting PCA Results
+**Interpreting PCA Results**
 
 * Individuals located close together are genetically similar.
 * Individuals located far apart are genetically differentiated.
@@ -263,7 +263,7 @@ This will generate a PCA plot showing the genetic relationships among individual
 
 ---
 
-## STEP 3: Examine Variance Explained
+**STEP 3: Examine Variance Explained*
 
 ```r
 eig_percent <- round(
@@ -280,7 +280,7 @@ Reporting the percentage of variation explained by PC1 and PC2 is recommended wh
 
 ---
 
-## STEP 4: Add Descriptive Population Labels
+**STEP 4: Add Descriptive Population Labels**
 
 For reference:
 
@@ -330,7 +330,7 @@ s.class(
 
 ---
 
-## Optional: Create a Publication-Quality PCA Figure
+**Optional: Create a Publication-Quality PCA Figure**
 
 ```r
 eig_percent <- round(

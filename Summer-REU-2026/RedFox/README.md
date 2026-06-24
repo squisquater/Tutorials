@@ -4,16 +4,74 @@ This tutorial uses data from:
 
 Quinn, C.B., Preckler-Quisquater, S., Akins, J.R. et al. **Contrasting genetic trajectories of endangered and expanding red fox populations in the western U.S.** Heredity (2022). https://doi.org/10.1038/s41437-022-00522-4
 
-Your genotypes should be in the proper format to run a structure analyis. See [discreteRFgenotypes_popmod.txt](https://github.com/squisquater/Tutorials/blob/main/01.PopStats-PopStr-msats/discreteRFgenotypes_popmod.txt) for an example. This tutorial will use this input file and associated parameters. To run these analyses on your own data, you will therefore need to modify all the scripts to align with the files associated with your project and modify parameters accordingly.*
+## Introduction
 
-You can clone this repository to your own computer by entering the following line of code in your terminal.
+Population structure analyses are commonly used to determine whether individuals belong to genetically distinct groups and to identify patterns of admixture among populations. Understanding population structure can provide insight into gene flow, dispersal, historical isolation, and population connectivity.
+
+In this tutorial, we will use two complementary approaches:
+
+* **STRUCTURE** – a model-based clustering method that estimates the proportion of an individual's ancestry derived from different genetic clusters.
+* **Principal Components Analysis (PCA)** – an ordination method that summarizes genetic variation into a small number of axes and allows patterns of genetic similarity to be visualized.
+
+These methods answer related but slightly different questions and are often used together to evaluate population structure.
+
+### General Workflow
+
+```text
+Genotype Data
+      ↓
+STRUCTURE Analysis
+      ↓
+Evaluate Multiple K Values
+      ↓
+Structure Harvester
+      ↓
+Visualize Admixture Patterns
+      ↓
+Principal Components Analysis (PCA)
+      ↓
+Interpret Population Structure
 ```
+
+Your genotypes should already be formatted appropriately for STRUCTURE. See [discreteRFgenotypes_popmod.txt](https://github.com/squisquater/Tutorials/blob/main/01.PopStats-PopStr-msats/discreteRFgenotypes_popmod.txt) for an example input file.
+
+To run these analyses on your own dataset, you will need to modify file names and parameter settings to match your project.
+
+You can clone this repository by running:
+
+```bash
 git clone https://github.com/squisquater/Tutorials.git
 ```
-Note: if you run into an error regarding the *xcrun: error: invalid active developer path* you may have to install xcode to your computer before you can clone the repository.
 
-## Population Structure
-Note that structure will accommodate population data but expects a number as opposed to text. For reference, WAC = 1, ORC = 2, LAS = 3, SN = 4, SV = 5, CANN = 6. \
+**Note:** If you receive the error:
+
+```bash
+xcrun: error: invalid active developer path
+```
+
+you may need to install Xcode command line tools before cloning the repository.
+
+---
+
+# STRUCTURE
+
+STRUCTURE is a model-based clustering method that attempts to assign individuals to genetic clusters based on allele frequencies.
+
+The user specifies the number of clusters (**K**) to evaluate, and the program estimates ancestry proportions for each individual.
+
+### Population Codes
+
+STRUCTURE accepts numerical population identifiers rather than text labels.
+
+| Population | Code |
+| ---------- | ---- |
+| WAC        | 1    |
+| ORC        | 2    |
+| LAS        | 3    |
+| SN         | 4    |
+| SV         | 5    |
+| CANN       | 6    |
+
 \
 **STEP 0:** Open the Structure program \
 \
@@ -51,40 +109,87 @@ This should load your input file and all associated project information
 * Under the **'Advanced'** tab select:
   * **Compute probability of the data (for estimating k)** (default)
   * **Print Q-hat** (this generates a nice tab-delimited text file with ancestry proportions)
+  * The Q-hat output file contains ancestry proportions for each individual and is useful for creating customized plots in R, ArcGIS, or Excel.
 * Click **'OK'**
 * Name the Parameter Set (i.e. 'WestRF_10k50k')
 
 **STEP 3:** Run Structure
 * Select **'Run'** from the **'Parameter Set'** dropdown menu
-* Set the number of populations assumed. 
- * You should test out multiple iterations of K.
- * You can also run multiple replicates of the same K-value in order to use structure harvester and determine the K-value with the highest likelihood.
+* Choose a value of **K**, the number of genetic clusters assumed by the model.
+```
+### What is K?
+
+K represents the number of genetic clusters STRUCTURE attempts to identify.
+
+Because the true number of clusters is typically unknown, analyses are usually run across a range of K values (e.g., K = 1–10).
+
+Different values of K may reveal biologically meaningful structure at different hierarchical levels.
+
+Recommended approach:
+* Run multiple K values (e.g., 1–10)
+* Run multiple replicates of each K value (e.g., 3-5)
+* Compare likelihood scores across K values
+* Evaluate biological plausibility alongside statistical results
+
+```
 
 **STEP 4:** View Results
 * Select the value of K you want to view from the Results folder.
-* Select **Bar Plot** from the Results menu to view the admixture proportions. You can sort by POP if they are not already in order.
+* Select **Bar Plot** from the Results menu to view the admixture proportions.
+* This plot displays the ancestry proportions estimated for each individual.
+* Individuals are represented by vertical bars, and colors represent ancestry assigned to different genetic clusters.
+* You may sort individuals by population to improve visualization.You can sort by POP if they are not already in order.
 * These results are also available in the Results folder and can be plotted in R or excel to customize the figure (i.e. colors, labels, etc)
+
+### Interpreting STRUCTURE Plots
+
+* Individuals represented by a single color are assigned primarily to one genetic cluster.
+* Individuals containing multiple colors show evidence of mixed ancestry (admixture).
+* Distinct color patterns among populations suggest genetic differentiation.
+* Similar color patterns across populations suggest ongoing gene flow or limited differentiation.
+
+The raw output files can also be exported and visualized using R, ArcGIS, or Excel.
 
 **STEP 5:** Structure Harvester
 * Zip your Results folder
 * Navigate to the [Structure Harvester](https://taylor0.biology.ucla.edu/structureHarvester/) website
 * Load the .zip file
 * Click the **Harvest!** button
-* This will give you the likelihood scores associated with each K value.
-* This will also show the delta-K values (Evanno method), assuming you ran >1 iteration of each K value. 
+* Structure Harvester provides:
 
-## Take a Break and Learn how to plot these results in ArcGIS
+* Mean likelihood values for each K
+* ΔK values using the Evanno method (assuming you ran >1 iteration of each K value)
+* Summary plots for model comparison
 
-## Another way to look at population structure is using a Principle Components Analysis (PCA)
+**Important Note**
 
-## Population Summary Statistics and Ne
-These statistics will be calculated for discrete groups. It is therefore suggested that you use the results from the population structure analyses to determine how to discretize your data (e.g., geographic clusters, genetic clusters, etc.)
+The K value with the highest ΔK is not necessarily the biologically correct answer.
 
-You will also need to output file from structure (i.e. 'project_data.stru') as an input for these analyses. This should be located in the project directory you specified above. This file is also included [here](https://github.com/squisquater/Tutorials/blob/main/01.PopStats-PopStr-msats/project_data.stru) for reference.
+Population structure should be interpreted using:
 
-**STEP 0:** Install/load the required packages in R and set your working directory
+* STRUCTURE results
+* PCA results
+* Sampling design
+* Knowledge of the species' biology and geography
+---
 
-```
+# Take a Break and Learn How to Plot These Results in ArcGIS
+
+---
+
+# Principal Components Analysis (PCA)
+
+PCA is a dimension-reduction technique that summarizes genetic variation into a small number of axes.
+
+Unlike STRUCTURE, PCA does not require specifying K and makes relatively few assumptions about population structure.
+
+Individuals that cluster together on a PCA plot are genetically similar.
+
+---
+
+## STEP 0: Install Required Packages
+
+```r
 install.packages("adegenet")
 install.packages("hierfstat")
 install.packages("reshape2")
@@ -93,35 +198,169 @@ install.packages("ggplot2")
 library(adegenet)
 library(hierfstat)
 library(reshape2)
-library(ggplot2
+library(ggplot2)
 
-setwd("~/path/to/working/directory")
+setwd("/path/to/Tutorials/Summer-REU-2026/RedFox")
 ```
 
-**STEP 1:** Read in your structure file using the 'read.structure' command {adegenet} to convert it to a GENIND object.
+Replace the path above with the location where you cloned the repository.
 
+---
+
+## STEP 1: Read the STRUCTURE File
+
+The file `project_data.stru` is generated by STRUCTURE and can be imported directly into R.
+
+```r
+genind_obj <- read.structure(
+  "project_data.stru",
+  n.ind = 301,
+  n.loc = 31,
+  onerowperind = TRUE,
+  col.lab = 1,
+  col.pop = 2,
+  col.others = 0,
+  row.marknames = 1,
+  NA.char = "-9",
+  ask = TRUE,
+  quiet = TRUE
+)
 ```
-d_discrete <- read.structure("project_data.stru", n.ind = 301, n.loc = 31, onerowperind = T, col.lab = 1, col.pop = 2, col.others = 0, row.marknames = 1, NA.char = "-9", ask = TRUE, quiet = T)
+
+For additional details about these parameters:
+
+```r
+?read.structure
 ```
-*You can type 'read.structure' into the 'R' help menu to find out more about each of these options/parameters.* 
 
+---
 
-**STEP 2:** Generate a PCA \
-\
-####PCA
-pca_result <- dudi.pca(genind_obj, scannf = FALSE, nf = 3)  # nf is the number of axes
-s.class(pca_result$li, pop(genind_obj))
+## STEP 2: Generate a PCA
 
-# Save original plot settings
-old_par <- par(no.readonly = TRUE)
+```r
+X <- scaleGen(genind_obj, NA.method = "mean")
 
-# Create space for the inset plot
-par(fig = c(0.7, 0.9, 0.7, 0.9), new = TRUE, mar = c(1, 1, 1, 1))
+pca_result <- dudi.pca(
+  X,
+  scannf = FALSE,
+  nf = 3
+)
 
-# Eigenvalues plot (scree plot)
-barplot(pca_result$eig, main = "Eigenvalues", xlab = "Axis", ylab = "Eigenvalue")
+s.class(
+  pca_result$li,
+  pop(genind_obj)
+)
+```
 
-# Restore original plot settings
-par(old_par)
+This will generate a PCA plot showing the genetic relationships among individuals.
 
+### Interpreting PCA Results
 
+* Individuals located close together are genetically similar.
+* Individuals located far apart are genetically differentiated.
+* Distinct clusters suggest population structure.
+* Overlapping clusters suggest ongoing gene flow or weak differentiation.
+
+---
+
+## STEP 3: Examine Variance Explained
+
+```r
+eig_percent <- round(
+  100 * pca_result$eig / sum(pca_result$eig),
+  2
+)
+
+eig_percent
+```
+
+The first few principal components typically explain the largest proportion of genetic variation.
+
+Reporting the percentage of variation explained by PC1 and PC2 is recommended when presenting PCA figures.
+
+---
+
+## STEP 4: Add Descriptive Population Labels
+
+For reference:
+
+| Code | Population |
+| ---- | ---------- |
+| 1    | WAC        |
+| 2    | ORC        |
+| 3    | LAS        |
+| 4    | SN         |
+| 5    | SV         |
+| 6    | CANN       |
+
+```r
+pop_labels <- c(
+  "WAC",
+  "ORC",
+  "LAS",
+  "SN",
+  "SV",
+  "CANN"
+)
+
+pop(genind_obj) <- factor(
+  pop_labels[as.numeric(pop(genind_obj))],
+  levels = pop_labels
+)
+
+table(pop(genind_obj))
+```
+
+Re-run the PCA:
+
+```r
+X <- scaleGen(genind_obj, NA.method = "mean")
+
+pca_result <- dudi.pca(
+  X,
+  scannf = FALSE,
+  nf = 3
+)
+
+s.class(
+  pca_result$li,
+  pop(genind_obj)
+)
+```
+
+---
+
+## Optional: Create a Publication-Quality PCA Figure
+
+```r
+eig_percent <- round(
+  100 * pca_result$eig / sum(pca_result$eig),
+  2
+)
+
+pca_df <- data.frame(
+  PC1 = pca_result$li[,1],
+  PC2 = pca_result$li[,2],
+  Population = pop(genind_obj)
+)
+
+ggplot(
+  pca_df,
+  aes(
+    x = PC1,
+    y = PC2,
+    color = Population
+  )
+) +
+  geom_point(size = 3) +
+  theme_bw() +
+  labs(
+    x = paste0("PC1 (", eig_percent[1], "%)"),
+    y = paste0("PC2 (", eig_percent[2], "%)"),
+    color = "Population"
+  )
+```
+
+This approach provides greater flexibility for customizing colors, labels, themes, and figure formatting.
+
+---
